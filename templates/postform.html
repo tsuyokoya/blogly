@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Post Form{% endblock %} {% block
+content %}
+<h1 class="text-center">Add New Post for {{user.get_full_name()}}</h1>
+<form class="container" action="/users/{{user.id}}/posts/new" method="POST">
+  <div>
+    <label for="title">Title:</label>
+    <input class="form-control" type="text" id="title" name="title" required />
+  </div>
+  <div>
+    <label for="content">Content:</label>
+    <input
+      class="form-control"
+      type="text"
+      id="content"
+      name="content"
+      required
+    />
+  </div>
+  <div>
+    <p>Choose your tags:</p>
+    {% for tag in tags %}
+    <div class="mb-2">
+      <input
+        type="checkbox"
+        id="{{tag.name}}"
+        name="check"
+        value="{{tag.name}}"
+      />
+      <label for="check" class="p-1 bg-primary text-white rounded"
+        >{{tag.name}}</label
+      >
+    </div>
+    {% endfor %}
+  </div>
+  <div>
+    <button class="btn btn-primary mt-2">Post</button>
+  </div>
+</form>
+<form class="container" action="/users/{{user.id}}">
+  <button class="btn btn-secondary mt-2">Back</button>
+</form>
+{% endblock %}

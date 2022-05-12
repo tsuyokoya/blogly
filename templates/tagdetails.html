@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Tags List{% endblock %} {% block
+content %}
+<h1 class="text-center">{{tag.name}}</h1>
+<div class="d-flex flex-column align-items-center">
+  <ul>
+    {% for post_tag in tag.post_tags %}
+    <li><a href="/posts/{{post_tag.posts.id}}">{{post_tag.posts.title}}</a></li>
+    {% endfor %}
+  </ul>
+  <form action="/tags/{{tag.id}}/edit">
+    <button class="btn btn-primary btn-lg">Edit Tag</button>
+  </form>
+  <form action="/tags/{{tag.id}}/delete" method="POST">
+    <button class="btn btn-danger m-2">Delete Tag</button>
+  </form>
+</div>
+{% endblock%}

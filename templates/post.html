@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block title %}Posts{% endblock %} {% block content
+%}
+<div class="container">
+  <div class="text-center">
+    <h1>{{post.title}}</h1>
+    <p id="post-content">{{post.content}}</p>
+    <p>
+      By: {{post.user.get_full_name()}} on {{post.created_at.strftime('%a %b %d
+      %Y, %H:%M %p')}}
+    </p>
+    {% if post.post_tags %}
+    <p>
+      Tags: {% for post_tag in post.post_tags %}
+      <span class="p-1 bg-primary text-white rounded">
+        {{post_tag.tags.name}}</span
+      >
+      {% endfor %}
+    </p>
+    {% endif %}
+  </div>
+  <div class="d-flex flex-row justify-content-center">
+    <form action="/users/{{post.user.id}}">
+      <button class="m-2 btn btn-secondary">Back to Bio</button>
+    </form>
+    <form action="/posts/{{post.id}}/edit">
+      <button class="m-2 btn btn-primary">Edit</button>
+    </form>
+    <form action="/posts/{{post.id}}/delete">
+      <button class="m-2 btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

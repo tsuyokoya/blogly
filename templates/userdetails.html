@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}User Details{% endblock %} {% block
+content %}
+<h1 class="text-center">{{user.get_full_name()}}'s Bio</h1>
+<div class="d-flex align-items-center justify-content-center">
+  <div class="m-5">
+    <img src="{{user.image_url}}" alt="user image" />
+  </div>
+  <div>
+    <h2 class="text-center">Posts:</h2>
+    {% if user.posts %}
+    <ul>
+      {% for post in user.posts %}
+      <li><a href="/posts/{{post.id}}" class="post-link">{{post.title}}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <h3 class="text-center">No Posts Yet!</h3>
+    {% endif %}
+
+    <div class="d-flex justify-content-center">
+      <form action="/users/{{user.id}}/posts/new">
+        <button class="btn btn-primary m-2">New Post</button>
+      </form>
+      <form action="/users/{{user.id}}/edit">
+        <button class="btn btn-primary m-2">Edit User</button>
+      </form>
+      <form action="/users/{{user.id}}/delete">
+        <button class="btn btn-danger m-2">Delete User</button>
+      </form>
+    </div>
+  </div>
+  {% endblock%}
+</div>

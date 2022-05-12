@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %}Tags List{% endblock %} {% block
+content %}
+<h1 class="text-center">Tags</h1>
+<div class="d-flex flex-column align-items-center">
+  <ul>
+    {% for tag in tags %}
+    <li><a href="/tags/{{tag.id}}">{{tag.name}}</a></li>
+    {% endfor %}
+  </ul>
+  <form action="/tags/new">
+    <button class="btn btn-primary btn-lg">Add Tag</button>
+  </form>
+</div>
+{% endblock%}

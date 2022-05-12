@@ -1,0 +1,29 @@
+h1 {
+  font-size: 5em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+li,
+#post-content {
+  font-size: 2em;
+}
+img {
+  height: 400px;
+  width: 400px;
+}
+
+button {
+  font-size: inherit;
+}
+
+.nav-link,
+.nav-link:visited {
+  color: white;
+}
+
+.nav-link:hover {
+  opacity: 50%;
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Post Form{% endblock %} {% block
+content %}
+<h1 class="text-center">Add a New Tag</h1>
+<form class="container" action="/tags/new" method="POST">
+  <div>
+    <label for="tag">Tag Name:</label>
+    <input class="form-control" type="text" id="tag" name="tag" required />
+  </div>
+  <div>
+    <button class="btn btn-primary mt-2">Add</button>
+  </div>
+</form>
+<form class="container" action="/tags">
+  <button class="btn btn-secondary mt-2">Back</button>
+</form>
+{% endblock %}
